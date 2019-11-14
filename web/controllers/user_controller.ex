@@ -1,5 +1,6 @@
 defmodule SimpleApp.UserController do
 	use SimpleApp.Web, :controller
+	alias SimpleApp.Server
 	require Logger
 
 	def create(conn, params) do
@@ -7,7 +8,7 @@ defmodule SimpleApp.UserController do
 
 		user_json_schema = generate_user_json_schema()
 		user_json_schema |> ExJsonSchema.Schema.resolve
-
+		
 		case ExJsonSchema.Validator.validate(user_json_schema, params, error_formatter: SimpleApp.JsonErrorFormatter) do
 			:ok -> 
 				port = Application.get_env(:simple_app, :socket_port)
@@ -15,7 +16,7 @@ defmodule SimpleApp.UserController do
 				Logger.debug("socket ===> #{inspect(socket)}")
     		message = :gen_tcp.send(socket, params["name"] <> " " <> params["last_name"])
     		Logger.debug("message ===> #{inspect(message)}")
-    		_ = :gen_tcp.close(socket)
+    		#_ = :gen_tcp.close(socket)
     
 				conn
 				|> put_status(:ok)
