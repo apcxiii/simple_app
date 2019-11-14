@@ -19,6 +19,8 @@ config :simple_app, SimpleApp.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :simple_app, socket_port: 7000, ip: {127,0,0,1}
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

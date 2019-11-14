@@ -1,15 +1,23 @@
 defmodule SimpleApp do
   use Application
+  require Logger
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
     import Supervisor.Spec
+    port = Application.get_env(:simple_app, :socket_port)
+    Logger.debug("config ===> #{inspect(port)}")
 
+    ip = Application.get_env(:simple_app, :ip)
+    config = [port: port]
+    Logger.debug("ip ===> #{inspect(ip)}")
+    Logger.debug("port ===> #{inspect(port)}")
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
       supervisor(SimpleApp.Endpoint, []),
+      {SimpleApp.Server, [ip, port]},      
       # Start your own worker by calling: SimpleApp.Worker.start_link(arg1, arg2, arg3)
       # worker(SimpleApp.Worker, [arg1, arg2, arg3]),
     ]

@@ -19,8 +19,9 @@ defmodule SimpleApp.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", SimpleApp do
-  #   pipe_through :api
-  # end
+  #Other scopes may use custom stacks.
+  scope "/api", SimpleApp do
+    pipe_through :api
+    post "/user", UserController, :create
+  end
 end
