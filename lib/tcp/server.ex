@@ -27,18 +27,18 @@ defmodule SimpleApp.Server do
   end
 
   def handle_info({:tcp,socket,packet},state) do
-    IO.inspect packet, label: "incoming packet"
+    Logger.debug("incoming packet ====> #{packet}")
     :gen_tcp.send socket,"Hi Blackode \n"
     {:noreply,state}
   end
 
   def handle_info({:tcp_closed,socket},state) do
-    IO.inspect "Socket has been closed"
+    Logger.debug("Socket has been closed") 
     {:noreply,state}
   end
 
   def handle_info({:tcp_error,socket,reason},state) do
-    IO.inspect socket,label: "connection closed dut to #{reason}"
+    Logger.debug("connection closed dut to #{reason}")
     {:noreply,state}
   end
 end

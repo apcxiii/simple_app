@@ -17,9 +17,7 @@ config :simple_app, SimpleApp.Endpoint,
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
-
-
-config :simple_app, port: 8765  
+  
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

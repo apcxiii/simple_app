@@ -17,7 +17,7 @@ defmodule SimpleApp.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {SimpleApp, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext]]
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext, :ex_json_schema]]
   end
 
   # Specifies which paths to compile per environment.
@@ -28,14 +28,14 @@ defmodule SimpleApp.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.4"},
+    [{:ex_json_schema, "~> 0.6.1"},
+     {:phoenix, "~> 1.4"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:plug_cowboy, "~> 2.0"},
      {:plug, "~> 1.7"},
-     {:poison, "~> 3.0"},
-     {:ranch, "~> 1.4"}]
+     {:poison, "~> 3.0"}]
   end
 end
