@@ -11,7 +11,7 @@ defmodule SimpleApp do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
-      supervisor(SimpleApp.Endpoint, []),
+      supervisor(SimpleApp.Endpoint, [])
       # Start your own worker by calling: SimpleApp.Worker.start_link(arg1, arg2, arg3)
       # worker(SimpleApp.Worker, [arg1, arg2, arg3]),
     ]
@@ -33,6 +33,6 @@ defmodule SimpleApp do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    SimpleApp.Endpoint.config_change(changed, removed)    
+    SimpleApp.Endpoint.config_change(changed, removed)
   end
 end
