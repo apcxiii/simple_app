@@ -8,3 +8,5 @@ config :simple_app, SimpleApp.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :simple_app, socket_port: 7000, ip: {127,0,0,1}
